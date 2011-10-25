@@ -2101,7 +2101,6 @@ parse_table_header(
 
 		if (data[i] == ':') {
 			i++; (*column_data)[col] |= MKD_TABLE_ALIGN_L;
-			dashes++;
 		}
 
 		while (i < under_end && data[i] == '-') {
@@ -2110,7 +2109,6 @@ parse_table_header(
 
 		if (i < under_end && data[i] == ':') {
 			i++; (*column_data)[col] |= MKD_TABLE_ALIGN_R;
-			dashes++;
 		}
 
 		while (i < under_end && data[i] == ' ')
@@ -2119,7 +2117,7 @@ parse_table_header(
 		if (i < under_end && data[i] != '|' && data[i] != '+')
 			break;
 
-		if (dashes < 3)
+		if (dashes < 1)
 			break;
 
 		i++;

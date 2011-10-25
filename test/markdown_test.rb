@@ -140,6 +140,20 @@ EOS
     assert render_with({:tables => true}, text) =~ /<table/
   end
 
+  def test_that_one_dashed_tables_works
+    text = <<EOS
+|a|b|
+|-|-|
+|c|d|
+|e|f|
+EOS
+
+    markdown = render_with({:tables => true}, text)
+
+    html_equal "<table><thead><tr><th>a</th><th>b</th></tr></thead><tbody><tr><td>c</td><td>d</td></tr><tr><td>e</td><td>f</td></tr></tbody></table>", markdown
+  end
+
+
   def test_that_tables_work_with_org_table_syntax
     text = <<EOS
 | aaa | bbbb |
